@@ -18,6 +18,10 @@ app.use("/api/v1/auth/login", require("./Routes/Authentication/login.js"));
 app.use("/api/v1/auth/signup", require("./Routes/Authentication/signup.js"));
 
 
+//parking plaza api
+app.use("/api/v1/parking-plaza", require("./Routes/ParkingPlaza.js"));
+
+
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
