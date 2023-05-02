@@ -6,6 +6,10 @@ const ParkingPlazaSchema = new Schema({
     type: String,
     require: true,
   },
+  description: {
+    type: String,
+    require: true,
+  },
   location: {
     type: {
       type: String,
@@ -31,6 +35,9 @@ const ParkingPlazaSchema = new Schema({
   },
   parking_slots: {
     type: Object,
+  },
+  booked_parkings: {
+    type: [Object],
   },
 });
 

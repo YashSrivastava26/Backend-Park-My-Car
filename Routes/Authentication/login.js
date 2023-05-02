@@ -8,12 +8,9 @@ require("dotenv").config({ path: ".env.local" });
 
 const JWT_SECRET = process.env.JWT_SECRET;
 
-router.get("/getUser", validateUser, (req, res) => {
-  const id = req.query.id;
-  res.send(id);
-});
 
 router.post("/", async (req, res) => {
+
   try {
     const { email, password } = req.body;
 
