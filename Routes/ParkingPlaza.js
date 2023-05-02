@@ -6,6 +6,21 @@ const Payment = require("../Models/Payment");
 const User = require("../Models/User");
 const router = express.Router();
 
+
+router.get("/get-bookings",async(req,res)=>{
+  try {
+    const parking_id = req.query.parking_plaza_id;
+    const targetParking = await ParkingPlaza.findById(parking_id)
+    res.send({bookings : targetParking.booked_parkings})
+  } catch (error) {
+    console.log(error);
+    return res
+      .status(500)
+      .json({ error: { message: "Internal server error" } });
+  }
+
+})
+
 router.post("/setParkingSlots", async (req, res) => {
   try {
     console.log(req.body);
@@ -19,7 +34,12 @@ router.post("/setParkingSlots", async (req, res) => {
     );
 
     return res.send({ msg: "Parking slots set", updatedParkingPlaza });
-  } catch (error) {}
+  } catch (error) {
+    console.log(error);
+    return res
+      .status(500)
+      .json({ error: { message: "Internal server error" } });
+  }
 });
 
 router.post("/book-slot", validateUser, async (req, res) => {
