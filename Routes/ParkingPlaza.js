@@ -108,7 +108,20 @@ router.post("/", async (req, res) => {
   }
 });
 
-router.get("/get-nearest-parkings", async (req, res) => {
+router.get("/get-parking-by-id", async (req, res) => {
+  try {
+    const id = req.query.id;
+    const targetParking = await ParkingPlaza.findById(id);
+    res.send({ parking: targetParking });
+  } catch (err) {
+    console.log(err);
+    return res
+      .status(500)
+      .json({ error: { message: "Internal server error" } });
+  }
+});
+
+router.get("/get-parkings", async (req, res) => {
   try {
     const lat = req.query.lat;
     const lng = req.query.lng;

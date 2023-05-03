@@ -8,7 +8,6 @@ const ParkingPlazaSchema = new Schema({
   },
   description: {
     type: String,
-    require: true,
   },
   location: {
     type: {
